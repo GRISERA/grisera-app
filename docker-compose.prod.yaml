@@ -12,9 +12,9 @@ services:
     ports:
       - "18180:80"
   frontend-ms:
-    image: registry.gitlab.com/grisera/grisera-v2/frontend-ms:latest
+    image: registry.gitlab.com/grisera/grisera-v2/grisera-ui-ms:latest
     build:
-      context: frontend
+      context: grisera-ui
       dockerfile: prod.dockerfile
     volumes:
       - /app/node_modules
@@ -23,7 +23,7 @@ services:
   auth-ms:
     image: registry.gitlab.com/grisera/grisera-v2/auth-ms:latest
     build:
-      context: auth-service
+      context: grisera-auth
       dockerfile: dev.dockerfile
     volumes:
       - /auth/node_modules

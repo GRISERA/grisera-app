@@ -1,7 +1,7 @@
 version: "3.9" # optional since v1.27.0
 services:
   grisera_api_mongodb:
-    build: grisera_api
+    build: grisera-api
     ports:
       - "18085:80"
     environment:
@@ -12,7 +12,7 @@ services:
 
   frontend-ms:
     build:
-      context: frontend
+      context: grisera-ui
       dockerfile: dev.dockerfile
     ports:
       - "8080:8080"
@@ -21,12 +21,12 @@ services:
 
   auth-ms:
     build:
-      context: auth-service
+      context: grisera-auth
       dockerfile: dev.dockerfile
     ports:
       - "8081:3000"
     volumes:
-      - ./auth-service:/auth
+      - ./grisera-auth:/auth
       - /auth/node_modules
     environment:
       - JWT_SECRET=jwtsecret
