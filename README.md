@@ -1,20 +1,53 @@
-# GRISERA framework
+# GRISERA APP
+## GRISERA UI
+### Windows konfiguracja
+
+Jeśli chcesz uruchomić aplikację na systemie Windows, podmień zawartość pliku vue.config.js na podaną:
+
+```
+const { defineConfig } = require('@vue/cli-service')
+module.exports = defineConfig({
+    configureWebpack: {
+    entry: "./src/main.js",
+    devServer: {
+        hot: true,
+    },
+    watch: true,
+    watchOptions: {
+        ignored: /node_modules/,
+        poll: 1000,
+    },
+},
+  transpileDependencies: [
+    'vuetify'
+  ]
+})
+```
+
+### Uruchomienie aplikacji
+1. `docker compose up -d`
+2. Aplikacja dostępna pod adresem: `http://localhost:8080/`
+
+
+
+
+## GRISERA framework
 Graph Representation Integrating Signals for Emotion Recognition and Analysis (GRISERA) framework provides a persistent model for storing integrated signals and methods for its creation.
 
-# Setting up the development environment 
-## Components
+### Setting up the development environment 
+### Components
 1. virtualenv (build in Python3)
 1. FastAPI framework
 1. Uvicorn ASGI server
 
-## Prerequisites
+### Prerequisites
 1. python3-venv 
 1. python3-dev
 
-## Setup steps
+### Setup steps
 1. `$ python3 -m venv venv`
 1. `$ source venv/bin/activate`
 1. `(venv) $ pip install -r requirements.txt`
 
-## Start Uvicorn server 
+### Start Uvicorn server 
 `(venv) $ uvicorn main:app --reload`

@@ -8,25 +8,57 @@ services:
       - "host.docker.internal:host-gateway"
     environment:
       - PERSISTENCE_TYPE=4
-      - MONGO_API_HOST=host.docker.internal
-      - MONGO_API_PORT=18086
+      - MONGO_API_HOST=user:password@mongodb
+      - MONGO_API_PORT=27017
       - TIMEOUT=300
 
-  mongodb:
-    image: mongo:6.0.2
-    container_name: mongodb
-    restart: unless-stopped
-    command: mongod
+  frontend-ms:
+    build:
+      context: frontend
+      dockerfile: dev.dockerfile
+    ports:
+      - "8080:8080"
     environment:
-      MONGODB_DATA_DIR: /data/db
-      MONDODB_LOG_DIR: /dev/null
+      - VUE_APP_AUTH_MS_URL=http://localhost:8081/api
+
+  auth-ms:
+    build:
+      context: auth-service
+      dockerfile: dev.dockerfile
+    ports:
+      - "8081:3000"
+    volumes:
+      - ./auth-service:/auth
+      - /auth/node_modules
+    environment:
+      - JWT_SECRET=jwtsecret
+      - DB_URL=mongodb://user:password@mongodb:27017/database?authSource=admin
+
+  mongodb:
+    image: mongo
+    restart: always
     volumes:
       - mongodbdata:/data/db
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=database
+
+  mongodb-show:
+    image: mongo-express
     ports:
-      - "18086:27017"
+      - "8084:8081"
+    depends_on:
+      - mongodb
+    restart: always
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_BASICAUTH_USERNAME: user
+      ME_CONFIG_BASICAUTH_PASSWORD: password
+      ME_CONFIG_MONGODB_AUTH_DATABASE: admin
+      ME_CONFIG_MONGODB_ADMINUSERNAME: user
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
 
 volumes:
   mongodbdata:
-    driver: local

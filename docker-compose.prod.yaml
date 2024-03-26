@@ -1,0 +1,43 @@
+version: "3.9"
+
+volumes:
+  database:
+
+services:
+  app-ms:
+    image: registry.gitlab.com/grisera/grisera-v2/app-ms:latest
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    ports:
+      - "18180:80"
+  frontend-ms:
+    image: registry.gitlab.com/grisera/grisera-v2/frontend-ms:latest
+    build:
+      context: frontend
+      dockerfile: prod.dockerfile
+    volumes:
+      - /app/node_modules
+    environment:
+      - VUE_APP_AUTH_MS_URL=http://153.19.52.85/api
+  auth-ms:
+    image: registry.gitlab.com/grisera/grisera-v2/auth-ms:latest
+    build:
+      context: auth-service
+      dockerfile: dev.dockerfile
+    volumes:
+      - /auth/node_modules
+    environment:
+      - JWT_SECRET=jwtsecret
+      - DB_URL=mongodb://user:password@database:27017/database?authSource=admin
+  database:
+    image: mongo
+    restart: always
+    ports:
+      - "18181:27017"
+    volumes:
+      - database:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=database
