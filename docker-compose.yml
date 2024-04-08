@@ -31,6 +31,7 @@ services:
     environment:
       - JWT_SECRET=jwtsecret
       - DB_URL=mongodb://user:password@mongodb:27017/auth?authSource=admin
+      - DB_NAME=auth
 
   mongodb:
     image: mongo

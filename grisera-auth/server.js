@@ -13,9 +13,10 @@ const connectWithRetry = () => {
   })
     .then(async () => {
       console.log('Connected to DB');
+      console.log(process.env.DB_URL);
       const admin = new mongoose.mongo.Admin(mongoose.connection.db);
       const dbs = await admin.listDatabases();
-      const dbExists = dbs.databases.some(db => db.name === 'database');
+      const dbExists = dbs.databases.some(db => db.name === process.env.DB_NAME);
 
       if (dbExists) {
         console.log('Database exists.');
