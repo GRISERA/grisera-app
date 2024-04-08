@@ -2,8 +2,7 @@ from typing import Union
 
 from bson import ObjectId
 
-from activity_execution.activity_execution_service import ActivityExecutionService
-from graph_api_service import GraphApiService
+from activity.activity_service import ActivityService
 from activity_execution.activity_execution_model import (
     ActivityExecutionPropertyIn,
     ActivityExecutionRelationIn,
@@ -12,16 +11,13 @@ from activity_execution.activity_execution_model import (
     ActivityExecutionsOut,
     BasicActivityExecutionOut,
 )
-from models.not_found_model import NotFoundByIdModel
-from helpers import create_stub_from_response
-
-from activity.activity_service import ActivityService
+from activity_execution.activity_execution_service import ActivityExecutionService
 from arrangement.arrangement_service import ArrangementService
+from models.not_found_model import NotFoundByIdModel
 from mongo_service.collection_mapping import Collections
 from mongo_service.service_mixins import GenericMongoServiceMixin
-from scenario.scenario_service import ScenarioService
-from experiment.experiment_service import ExperimentService
 from participation.participation_service import ParticipationService
+from scenario.scenario_service import ScenarioService
 
 
 class ActivityExecutionServiceMongoDB(

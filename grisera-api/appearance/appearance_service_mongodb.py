@@ -1,7 +1,5 @@
 from typing import Union
 
-from appearance.appearance_service import AppearanceService
-from graph_api_service import GraphApiService
 from appearance.appearance_model import (
     AppearanceOcclusionIn,
     AppearanceOcclusionOut,
@@ -11,7 +9,7 @@ from appearance.appearance_model import (
     BasicAppearanceSomatotypeOut,
     AppearancesOut,
 )
-from helpers import create_stub_from_response
+from appearance.appearance_service import AppearanceService
 from models.not_found_model import NotFoundByIdModel
 from mongo_service.collection_mapping import Collections
 from mongo_service.mongo_api_service import MongoApiService

@@ -1,7 +1,6 @@
 from typing import Union
 
-from graph_api_service import GraphApiService
-from helpers import create_stub_from_response
+from models.not_found_model import NotFoundByIdModel
 from mongo_service.collection_mapping import Collections
 from mongo_service.mongo_api_service import MongoApiService
 from participant_state.participant_state_service import ParticipantStateService
@@ -14,7 +13,6 @@ from personality.personality_model import (
     BasicPersonalityPanasOut,
     PersonalitiesOut,
 )
-from models.not_found_model import NotFoundByIdModel
 from personality.personality_service import PersonalityService
 
 

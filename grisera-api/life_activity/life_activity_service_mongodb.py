@@ -1,8 +1,5 @@
 from typing import Union
 
-from mongo_service.collection_mapping import Collections
-from mongo_service.service_mixins import GenericMongoServiceMixin
-from helpers import create_stub_from_response
 from life_activity.life_activity_model import (
     LifeActivityIn,
     LifeActivityOut,
@@ -10,7 +7,8 @@ from life_activity.life_activity_model import (
     BasicLifeActivityOut,
 )
 from life_activity.life_activity_service import LifeActivityService
-from models.not_found_model import NotFoundByIdModel
+from mongo_service.collection_mapping import Collections
+from mongo_service.service_mixins import GenericMongoServiceMixin
 from observable_information.observable_information_service import (
     ObservableInformationService,
 )

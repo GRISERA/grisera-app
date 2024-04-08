@@ -16,7 +16,6 @@ from activity.activity_model import (
 )
 from activity.activity_service import ActivityService
 from models.not_found_model import NotFoundByIdModel
-from helpers import create_stub_from_response
 from mongo_service.collection_mapping import Collections
 from mongo_service.mongo_api_service import MongoApiService
 from mongo_service.service_mixins import GenericMongoServiceMixin

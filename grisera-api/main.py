@@ -30,7 +30,7 @@ from registered_data.registered_data_router import router as registered_data_rou
 from scenario.scenario_router import router as scenario_router
 from measure_name.measure_name_router import router as measure_name_router
 from setup import SetupNodes
-from graph_api_config import *
+import os
 
 app = FastAPI(
     title="GRISERA API",

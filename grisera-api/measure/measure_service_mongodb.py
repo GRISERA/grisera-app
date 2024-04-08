@@ -1,7 +1,5 @@
 from typing import Union
 
-from graph_api_service import GraphApiService
-from helpers import create_stub_from_response
 from measure.measure_model import (
     MeasurePropertyIn,
     BasicMeasureOut,
@@ -16,7 +14,6 @@ from models.not_found_model import NotFoundByIdModel
 from mongo_service.collection_mapping import Collections
 from mongo_service.mongo_api_service import MongoApiService
 from mongo_service.service_mixins import GenericMongoServiceMixin
-from time_series.time_series_service import TimeSeriesService
 
 
 class MeasureServiceMongoDB(MeasureService, GenericMongoServiceMixin):
@@ -24,7 +21,7 @@ class MeasureServiceMongoDB(MeasureService, GenericMongoServiceMixin):
     Object to handle logic of measure requests
 
     Attributes:
-        graph_api_service (GraphApiService): Service used to communicate with Graph API
+        mongo_api_service (MongoApiService): Service used to communicate with Mongo API
         measure_name_service (MeasureNameService): Service to manage measure name models
     """
 

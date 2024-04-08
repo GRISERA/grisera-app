@@ -2,9 +2,6 @@ from activity.activity_service_mongodb import ActivityServiceMongoDB
 from activity_execution.activity_execution_service_mongodb import (
     ActivityExecutionServiceMongoDB,
 )
-from activity_execution.activity_execution_service_ontology import (
-    ActivityExecutionServiceOntology,
-)
 from appearance.appearance_service_mongodb import AppearanceServiceMongoDB
 from arrangement.arrangement_service_mongodb import ArrangementServiceMongoDB
 from experiment.experiment_service_mongodb import ExperimentServiceMongoDB
