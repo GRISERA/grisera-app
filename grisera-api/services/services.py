@@ -3,11 +3,6 @@ from enum import Enum
 from services.mongo_services import MongoServiceFactory
 
 from services.service_factory import ServiceFactory
-from services.graph_services import (
-    GraphServiceFactory,
-    GraphWithSignalValuesServiceFactory,
-)
-from services.ontology_services import OntologyServiceFactory
 from activity.activity_service import ActivityService
 from activity_execution.activity_execution_service import ActivityExecutionService
 from appearance.appearance_service import AppearanceService
@@ -33,9 +28,6 @@ from time_series.time_series_service import TimeSeriesService
 
 
 class PersistenceTypes(Enum):
-    GRAPHDB = 1
-    ONTOLOGY = 2
-    GRAPHDB_WITH_SIGNAL_VALUES = 3
     MONGODB = 4
 
 
@@ -49,18 +41,12 @@ class Services:
         self.persistence_type = (
             PersistenceTypes(int(os.environ.get("PERSISTENCE_TYPE")))
             if "PERSISTENCE_TYPE" in os.environ
-            else PersistenceTypes.GRAPHDB
+            else PersistenceTypes.MONGODB
         )
         self.service_factory = self.get_service_factory()
 
     def get_service_factory(self) -> ServiceFactory:
-        if self.persistence_type == PersistenceTypes.GRAPHDB:
-            return GraphServiceFactory()
-        elif self.persistence_type == PersistenceTypes.GRAPHDB_WITH_SIGNAL_VALUES:
-            return GraphWithSignalValuesServiceFactory()
-        elif self.persistence_type == PersistenceTypes.ONTOLOGY:
-            return OntologyServiceFactory()
-        elif self.persistence_type == PersistenceTypes.MONGODB:
+        if self.persistence_type == PersistenceTypes.MONGODB:
             return MongoServiceFactory()
         else:
             return ServiceFactory()
