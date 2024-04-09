@@ -8,7 +8,7 @@ from activity.activity_model import ActivityOut, ActivitiesOut
 from activity.activity_model import ActivityIn
 from hateoas import get_links
 from models.not_found_model import NotFoundByIdModel
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -22,8 +22,8 @@ class ActivityRouter:
         activity_service (ActivityService): Service instance for activity
     """
 
-    def __init__(self):
-        self.activity_service = Services().activity_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.activity_service = service_factory.get_activity_service()
 
     @router.post(
         "/activities",

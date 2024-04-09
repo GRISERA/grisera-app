@@ -9,7 +9,7 @@ from participant.participant_model import (
     ParticipantsOut,
 )
 from models.not_found_model import NotFoundByIdModel
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -23,8 +23,8 @@ class ParticipantRouter:
         participant_service (ParticipantService): Service instance for participants
     """
 
-    def __init__(self):
-        self.participant_service = Services().participant_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.participant_service = service_factory.get_participant_service()
 
     @router.post("/participants", tags=["participants"], response_model=ParticipantOut)
     async def create_participant(self, participant: ParticipantIn, response: Response):

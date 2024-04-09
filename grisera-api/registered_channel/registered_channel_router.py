@@ -11,7 +11,7 @@ from registered_channel.registered_channel_model import (
     RegisteredChannelOut,
 )
 
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -25,8 +25,8 @@ class RegisteredChannelRouter:
         registered_channel (RegisteredChannelService): Service instance for registered channel
     """
 
-    def __init__(self):
-        self.registered_channel_service = Services().registered_channel_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.registered_channel_service = service_factory.get_registered_channel_service()
 
     @router.post(
         "/registered_channels",

@@ -11,7 +11,7 @@ from measure.measure_model import (
 )
 from typing import Union
 from models.not_found_model import NotFoundByIdModel
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -25,8 +25,8 @@ class MeasureRouter:
         measure_service (MeasureService): Service instance for measures
     """
 
-    def __init__(self):
-        self.measure_service = Services().measure_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.measure_service = service_factory.get_measure_service()
 
     @router.post("/measures", tags=["measures"], response_model=MeasureOut)
     async def create_measure(self, measure: MeasureIn, response: Response):

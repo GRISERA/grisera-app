@@ -9,7 +9,7 @@ from arrangement.arrangement_model import (
     ArrangementsOut,
 )
 from models.not_found_model import NotFoundByIdModel
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -23,8 +23,8 @@ class ArrangementRouter:
         arrangement_service (ArrangementService): Service instance for arrangement
     """
 
-    def __init__(self):
-        self.arrangement_service = Services().arrangement_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.arrangement_service = service_factory.get_arrangement_service()
 
     @router.get(
         "/arrangements/{arrangement_id}",

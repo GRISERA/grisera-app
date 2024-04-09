@@ -6,7 +6,7 @@ from fastapi_utils.inferring_router import InferringRouter
 from hateoas import get_links
 from channel.channel_model import ChannelOut, ChannelsOut, ChannelIn
 from models.not_found_model import NotFoundByIdModel
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -20,8 +20,8 @@ class ChannelRouter:
         channel_service (ChannelService): Service instance for channel
     """
 
-    def __init__(self):
-        self.channel_service = Services().channel_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.channel_service = service_factory.get_channel_service()
 
     @router.post(
         "/channels",

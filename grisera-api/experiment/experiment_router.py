@@ -5,7 +5,7 @@ from hateoas import get_links
 from typing import Union
 from experiment.experiment_model import ExperimentIn, ExperimentOut, ExperimentsOut
 from models.not_found_model import NotFoundByIdModel
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -19,8 +19,8 @@ class ExperimentRouter:
         experiment_service (ExperimentService): Service instance for experiments
     """
 
-    def __init__(self):
-        self.experiment_service = Services().experiment_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.experiment_service = service_factory.get_experiment_service()
 
     @router.post("/experiments", tags=["experiments"], response_model=ExperimentOut)
     async def create_experiment(self, experiment: ExperimentIn, response: Response):

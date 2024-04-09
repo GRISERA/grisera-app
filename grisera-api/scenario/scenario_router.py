@@ -14,7 +14,7 @@ from activity_execution.activity_execution_model import (
     ActivityExecutionOut,
     ActivityExecutionIn,
 )
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -28,8 +28,8 @@ class ScenarioRouter:
         scenario_service (ScenarioService): Service instance for scenarios
     """
 
-    def __init__(self):
-        self.scenario_service = Services().scenario_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.scenario_service = service_factory.get_scenario_service()
 
     @router.post("/scenarios", tags=["scenarios"], response_model=ScenarioOut)
     async def create_scenario(self, scenario: ScenarioIn, response: Response):

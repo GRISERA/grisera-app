@@ -13,7 +13,7 @@ from personality.personality_model import (
 )
 
 from models.not_found_model import NotFoundByIdModel
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -27,8 +27,8 @@ class PersonalityRouter:
         personality_service (PersonalityService): Service instance for personality
     """
 
-    def __init__(self):
-        self.personality_service = Services().personality_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.personality_service = service_factory.get_personality_service()
 
     @router.post(
         "/personality/big_five_model",

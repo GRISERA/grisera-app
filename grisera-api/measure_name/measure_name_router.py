@@ -10,7 +10,7 @@ from measure_name.measure_name_model import (
     MeasureNamesOut,
 )
 from models.not_found_model import NotFoundByIdModel
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -24,8 +24,8 @@ class MeasureNameRouter:
         measure_name_service (MeasureNameService): Service instance for measure name
     """
 
-    def __init__(self):
-        self.measure_name_service = Services().measure_name_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.measure_name_service = service_factory.get_measure_name_service()
 
     @router.post(
         "/measure_names",

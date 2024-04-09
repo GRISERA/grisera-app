@@ -17,7 +17,7 @@ from time_series.time_series_model import (
 )
 from time_series.time_series_service import TimeSeriesService
 from models.not_found_model import NotFoundByIdModel
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -31,8 +31,8 @@ class TimeSeriesRouter:
         time_series_service (TimeSeriesService): Service instance for time series
     """
 
-    def __init__(self):
-        self.time_series_service = Services().time_series_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.time_series_service = service_factory.get_time_series_service()
 
     @router.post("/time_series", tags=["time series"], response_model=TimeSeriesOut)
     async def create_time_series(self, time_series: TimeSeriesIn, response: Response):

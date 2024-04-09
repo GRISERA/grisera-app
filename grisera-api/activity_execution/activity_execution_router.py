@@ -12,7 +12,7 @@ from activity_execution.activity_execution_model import (
     ActivityExecutionPropertyIn,
     ActivityExecutionRelationIn,
 )
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -26,8 +26,8 @@ class ActivityExecutionRouter:
         activity_execution_service (ActivityExecutionService): Service instance for activity execution
     """
 
-    def __init__(self):
-        self.activity_execution_service = Services().activity_execution_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.activity_execution_service = service_factory.get_activity_execution_service()
 
     @router.post(
         "/activity_executions",

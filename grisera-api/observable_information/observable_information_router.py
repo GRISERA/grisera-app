@@ -11,7 +11,7 @@ from observable_information.observable_information_model import (
 )
 
 from models.not_found_model import NotFoundByIdModel
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -25,10 +25,8 @@ class ObservableInformationRouter:
         observable_information_service (ObservableInformationService): Service instance for observable information
     """
 
-    def __init__(self):
-        self.observable_information_service = (
-            Services().observable_information_service()
-        )
+    def __init__(self, service_factory: ServiceFactory):
+        self.observable_information_service = service_factory.get_observable_information_service()
 
     @router.post(
         "/observable_information",

@@ -12,7 +12,7 @@ from appearance.appearance_model import (
 )
 
 from models.not_found_model import NotFoundByIdModel
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -26,8 +26,8 @@ class AppearanceRouter:
         appearance_service (AppearanceService): Service instance for appearance
     """
 
-    def __init__(self):
-        self.appearance_service = Services().appearance_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.appearance_service = service_factory.get_appearance_service()
 
     @router.post(
         "/appearance/occlusion_model",

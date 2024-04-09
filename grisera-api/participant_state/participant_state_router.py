@@ -11,7 +11,7 @@ from participant_state.participant_state_model import (
 )
 from typing import Union
 from models.not_found_model import NotFoundByIdModel
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -25,8 +25,8 @@ class ParticipantStateRouter:
         participant_state_service (ParticipantStateService): Service instance for participants' states
     """
 
-    def __init__(self):
-        self.participant_state_service = Services().participant_state_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.participant_state_service = service_factory.get_participant_state_service()
 
     @router.post(
         "/participant_state",

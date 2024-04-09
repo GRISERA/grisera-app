@@ -10,7 +10,7 @@ from participation.participation_model import (
     ParticipationOut,
     ParticipationsOut,
 )
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -24,8 +24,8 @@ class ParticipationRouter:
         participation_service (ParticipationService): Service instance for participation
     """
 
-    def __init__(self):
-        self.participation_service = Services().participation_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.participation_service = service_factory.get_participation_service()
 
     @router.post(
         "/participations", tags=["participations"], response_model=ParticipationOut

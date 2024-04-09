@@ -10,7 +10,7 @@ from registered_data.registered_data_model import (
     RegisteredDataNodesOut,
 )
 from models.not_found_model import NotFoundByIdModel
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -24,8 +24,8 @@ class RegisteredDataRouter:
         registered_data_service (RegisteredDataService): Service instance for registered data
     """
 
-    def __init__(self):
-        self.registered_data_service = Services().registered_data_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.registered_data_service = service_factory.get_registered_data_service()
 
     @router.post(
         "/registered_data", tags=["registered data"], response_model=RegisteredDataOut

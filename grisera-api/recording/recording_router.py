@@ -12,7 +12,7 @@ from recording.recording_model import (
     RecordingOut,
     RecordingsOut,
 )
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -26,8 +26,8 @@ class RecordingRouter:
         recording_service (RecordingService): Service instance for recording
     """
 
-    def __init__(self):
-        self.recording_service = Services().recording_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.recording_service = service_factory.get_recording_service()
 
     @router.post("/recordings", tags=["recordings"], response_model=RecordingOut)
     async def create_recording(self, recording: RecordingIn, response: Response):

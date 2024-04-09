@@ -8,7 +8,7 @@ from hateoas import get_links
 from modality.modality_model import ModalityOut, ModalitiesOut
 
 from models.not_found_model import NotFoundByIdModel
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -22,8 +22,8 @@ class ModalityRouter:
         modality_service (ModalityService): Service instance for modality
     """
 
-    def __init__(self):
-        self.modality_service = Services().modality_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.modality_service = service_factory.get_modality_service()
 
     @router.post(
         "/modalities",

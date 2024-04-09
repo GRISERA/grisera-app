@@ -10,7 +10,7 @@ from life_activity.life_activity_model import (
     LifeActivitiesOut,
 )
 from models.not_found_model import NotFoundByIdModel
-from services import Services
+from services import ServiceFactory
 
 router = InferringRouter()
 
@@ -24,8 +24,8 @@ class LifeActivityRouter:
         life_activity_service (LifeActivityService): Service instance for life activity
     """
 
-    def __init__(self):
-        self.life_activity_service = Services().life_activity_service()
+    def __init__(self, service_factory: ServiceFactory):
+        self.life_activity_service = service_factory.get_life_activity_service()
 
     @router.post(
         "/life_activities",
