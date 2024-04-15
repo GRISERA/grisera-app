@@ -1,13 +1,13 @@
 from typing import Union
 
-from measure.measure_service import MeasureService
-from measure_name.measure_name_model import (
+from grisera import MeasureService
+from grisera import (
     MeasureNameIn,
     MeasureNameOut,
     MeasureNamesOut,
     BasicMeasureNameOut,
 )
-from measure_name.measure_name_service import MeasureNameService
+from grisera import MeasureNameService
 from mongo_service.collection_mapping import Collections
 from mongo_service.mongo_api_service import MongoApiService
 from mongo_service.service_mixins import GenericMongoServiceMixin

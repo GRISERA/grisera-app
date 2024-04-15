@@ -1,7 +1,7 @@
 version: "3.9" # optional since v1.27.0
 services:
   grisera_api_mongodb:
-    build: grisera-api
+    build: grisera-core-mongo
     ports:
       - "18085:80"
     environment:

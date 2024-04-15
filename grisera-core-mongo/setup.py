@@ -1,15 +1,15 @@
-from activity.activity_model import ActivityIn, Activity
-from activity.activity_service import ActivityService
-from arrangement.arrangement_model import ArrangementIn, Arrangement
-from arrangement.arrangement_service import ArrangementService
-from channel.channel_model import ChannelIn, Type
-from channel.channel_service import ChannelService
-from life_activity.life_activity_model import LifeActivityIn, LifeActivity
-from life_activity.life_activity_service import LifeActivityService
-from measure_name.measure_name_model import MeasureNameIn, MeasureName
-from measure_name.measure_name_service import MeasureNameService
-from modality.modality_model import ModalityIn, Modality
-from modality.modality_service import ModalityService
+from grisera import ActivityIn, Activity
+from grisera import ActivityService
+from grisera import ArrangementIn, Arrangement
+from grisera import ArrangementService
+from grisera import ChannelIn, Type
+from grisera import ChannelService
+from grisera import LifeActivityIn, LifeActivity
+from grisera import LifeActivityService
+from grisera import MeasureNameIn, MeasureName
+from grisera import MeasureNameService
+from grisera import ModalityIn, Modality
+from grisera import ModalityService
 
 
 class SetupNodes:

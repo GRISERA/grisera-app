@@ -1,6 +1,6 @@
 from typing import Union
 
-from measure.measure_model import (
+from grisera import (
     MeasurePropertyIn,
     BasicMeasureOut,
     MeasuresOut,
@@ -8,9 +8,9 @@ from measure.measure_model import (
     MeasureIn,
     MeasureRelationIn,
 )
-from measure.measure_service import MeasureService
-from measure_name.measure_name_service import MeasureNameService
-from models.not_found_model import NotFoundByIdModel
+from grisera import MeasureService
+from grisera import MeasureNameService
+from grisera import NotFoundByIdModel
 from mongo_service.collection_mapping import Collections
 from mongo_service.mongo_api_service import MongoApiService
 from mongo_service.service_mixins import GenericMongoServiceMixin

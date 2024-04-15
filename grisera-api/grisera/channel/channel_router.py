@@ -1,11 +1,12 @@
 from typing import Union
 
-from fastapi import Response
+from fastapi import Response, Depends
 from fastapi_utils.cbv import cbv
 from fastapi_utils.inferring_router import InferringRouter
 from grisera.helpers.hateoas import get_links
 from grisera.channel.channel_model import ChannelOut, ChannelsOut, ChannelIn
 from grisera.models.not_found_model import NotFoundByIdModel
+from grisera.services.service import service
 from grisera.services.service_factory import ServiceFactory
 
 router = InferringRouter()
@@ -20,7 +21,7 @@ class ChannelRouter:
         channel_service (ChannelService): Service instance for channel
     """
 
-    def __init__(self, service_factory: ServiceFactory):
+    def __init__(self, service_factory: ServiceFactory = Depends(service.get_service_factory)):
         self.channel_service = service_factory.get_channel_service()
 
     @router.post(

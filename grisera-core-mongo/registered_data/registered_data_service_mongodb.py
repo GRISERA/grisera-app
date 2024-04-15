@@ -3,13 +3,13 @@ from mongo_service.collection_mapping import Collections
 from mongo_service.service_mixins import (
     GenericMongoServiceMixin,
 )
-from registered_data.registered_data_model import (
+from grisera import (
     RegisteredDataIn,
     RegisteredDataNodesOut,
     BasicRegisteredDataOut,
     RegisteredDataOut,
 )
-from registered_data.registered_data_service import RegisteredDataService
+from grisera import RegisteredDataService
 
 
 class RegisteredDataServiceMongoDB(RegisteredDataService, GenericMongoServiceMixin):

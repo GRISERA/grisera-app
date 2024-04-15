@@ -1,21 +1,22 @@
 from typing import Union
 
 from bson import ObjectId
-from activity_execution.activity_execution_model import (
+from grisera import (
     ActivityExecutionIn,
     ActivityExecutionOut,
     BasicActivityExecutionOut,
 )
 
-from activity_execution.activity_execution_service import ActivityExecutionService
-from activity.activity_model import (
+from grisera import ActivityExecutionService
+from grisera import (
     ActivityIn,
     ActivityOut,
     ActivitiesOut,
     BasicActivityOut,
 )
-from activity.activity_service import ActivityService
-from models.not_found_model import NotFoundByIdModel
+from grisera import ActivityService
+from grisera import NotFoundByIdModel
+
 from mongo_service.collection_mapping import Collections
 from mongo_service.mongo_api_service import MongoApiService
 from mongo_service.service_mixins import GenericMongoServiceMixin

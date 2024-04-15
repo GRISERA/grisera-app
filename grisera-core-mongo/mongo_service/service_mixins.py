@@ -3,7 +3,7 @@ from typing import Union
 
 from pydantic import BaseModel
 from mongo_service.collection_mapping import get_collection_name
-from models.not_found_model import NotFoundByIdModel
+from grisera import NotFoundByIdModel
 from mongo_service import MongoApiService
 
 

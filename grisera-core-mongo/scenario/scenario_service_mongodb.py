@@ -1,20 +1,20 @@
 from typing import List, Union
 
-from activity_execution.activity_execution_service import ActivityExecutionService
-from experiment.experiment_model import ExperimentOut
-from experiment.experiment_service import ExperimentService
+from grisera import ActivityExecutionService
+from grisera import ExperimentOut
+from grisera import ExperimentService
 from mongo_service.collection_mapping import Collections
-from scenario.scenario_model import (
+from grisera import (
     ScenarioIn,
     ScenarioOut,
     OrderChangeIn,
     OrderChangeOut,
 )
-from activity_execution.activity_execution_model import (
+from grisera import (
     ActivityExecutionIn,
 )
-from models.not_found_model import NotFoundByIdModel
-from scenario.scenario_service import ScenarioService
+from grisera import NotFoundByIdModel
+from grisera import ScenarioService
 from mongo_service.service_mixins import (
     GenericMongoServiceMixin,
 )

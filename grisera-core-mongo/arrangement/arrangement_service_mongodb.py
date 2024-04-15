@@ -1,8 +1,8 @@
 from typing import Union
 
-from activity_execution.activity_execution_service import ActivityExecutionService
-from arrangement.arrangement_service import ArrangementService
-from arrangement.arrangement_model import (
+from grisera import ActivityExecutionService
+from grisera import ArrangementService
+from grisera import (
     ArrangementIn,
     ArrangementOut,
     ArrangementsOut,

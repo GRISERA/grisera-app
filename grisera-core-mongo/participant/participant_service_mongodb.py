@@ -2,23 +2,23 @@ from typing import Union
 
 from bson import ObjectId
 
-from models.not_found_model import NotFoundByIdModel
+from grisera import NotFoundByIdModel
 from mongo_service import MongoApiService
 from mongo_service.collection_mapping import Collections
 from mongo_service.service_mixins import GenericMongoServiceMixin
-from participant.participant_model import (
+from grisera import (
     ParticipantIn,
     ParticipantsOut,
     BasicParticipantOut,
     ParticipantOut,
 )
-from participant.participant_service import ParticipantService
-from participant_state.participant_state_model import (
+from grisera import ParticipantService
+from grisera import (
     BasicParticipantStateOut,
     ParticipantStateIn,
     ParticipantStateOut,
 )
-from participant_state.participant_state_service import ParticipantStateService
+from grisera import ParticipantStateService
 
 
 class ParticipantServiceMongoDB(ParticipantService, GenericMongoServiceMixin):

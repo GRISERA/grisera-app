@@ -1,4 +1,4 @@
-from fastapi import Response
+from fastapi import Response, Depends
 from fastapi_utils.cbv import cbv
 from fastapi_utils.inferring_router import InferringRouter
 from grisera.helpers.hateoas import get_links
@@ -9,6 +9,7 @@ from grisera.participant.participant_model import (
     ParticipantsOut,
 )
 from grisera.models.not_found_model import NotFoundByIdModel
+from grisera.services.service import service
 from grisera.services.service_factory import ServiceFactory
 
 router = InferringRouter()
@@ -23,7 +24,7 @@ class ParticipantRouter:
         participant_service (ParticipantService): Service instance for participants
     """
 
-    def __init__(self, service_factory: ServiceFactory):
+    def __init__(self, service_factory: ServiceFactory = Depends(service.get_service_factory)):
         self.participant_service = service_factory.get_participant_service()
 
     @router.post("/participants", tags=["participants"], response_model=ParticipantOut)

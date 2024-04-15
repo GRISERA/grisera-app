@@ -1,6 +1,6 @@
 from typing import Union, Type
-from channel.channel_service import ChannelService
-from channel.channel_model import ChannelIn, ChannelOut, ChannelsOut, BasicChannelOut
+from grisera import ChannelService
+from grisera import ChannelIn, ChannelOut, ChannelsOut, BasicChannelOut
 from mongo_service.collection_mapping import Collections
 from mongo_service.service_mixins import GenericMongoServiceMixin
 

@@ -1,11 +1,12 @@
 from typing import Union, Optional
 
-from fastapi import Response
+from fastapi import Response, Depends
 from fastapi_utils.cbv import cbv
 from fastapi_utils.inferring_router import InferringRouter
 from starlette.requests import Request
 
 from grisera.helpers.hateoas import get_links
+from grisera.services.service import service
 from grisera.time_series.time_series_model import (
     TimeSeriesIn,
     TimeSeriesNodesOut,
@@ -30,7 +31,7 @@ class TimeSeriesRouter:
         time_series_service (TimeSeriesService): Service instance for time series
     """
 
-    def __init__(self, service_factory: ServiceFactory):
+    def __init__(self, service_factory: ServiceFactory = Depends(service.get_service_factory)):
         self.time_series_service = service_factory.get_time_series_service()
 
     @router.post("/time_series", tags=["time series"], response_model=TimeSeriesOut)

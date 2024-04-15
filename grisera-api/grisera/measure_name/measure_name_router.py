@@ -1,6 +1,6 @@
 from typing import Union
 
-from fastapi import Response
+from fastapi import Response, Depends
 from fastapi_utils.cbv import cbv
 from fastapi_utils.inferring_router import InferringRouter
 from grisera.measure_name.measure_name_model import MeasureNameIn
@@ -10,6 +10,7 @@ from grisera.measure_name.measure_name_model import (
     MeasureNamesOut,
 )
 from grisera.models.not_found_model import NotFoundByIdModel
+from grisera.services.service import service
 from grisera.services.service_factory import ServiceFactory
 
 router = InferringRouter()
@@ -24,7 +25,7 @@ class MeasureNameRouter:
         measure_name_service (MeasureNameService): Service instance for measure name
     """
 
-    def __init__(self, service_factory: ServiceFactory):
+    def __init__(self, service_factory: ServiceFactory = Depends(service.get_service_factory)):
         self.measure_name_service = service_factory.get_measure_name_service()
 
     @router.post(

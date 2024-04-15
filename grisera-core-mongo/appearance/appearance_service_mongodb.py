@@ -1,6 +1,6 @@
 from typing import Union
 
-from appearance.appearance_model import (
+from grisera import (
     AppearanceOcclusionIn,
     AppearanceOcclusionOut,
     BasicAppearanceOcclusionOut,
@@ -9,12 +9,12 @@ from appearance.appearance_model import (
     BasicAppearanceSomatotypeOut,
     AppearancesOut,
 )
-from appearance.appearance_service import AppearanceService
-from models.not_found_model import NotFoundByIdModel
+from grisera import AppearanceService
+from grisera import NotFoundByIdModel
 from mongo_service.collection_mapping import Collections
 from mongo_service.mongo_api_service import MongoApiService
 from mongo_service.service_mixins import GenericMongoServiceMixin
-from participant_state.participant_state_service import ParticipantStateService
+from grisera import ParticipantStateService
 
 
 class AppearanceServiceMongoDB(AppearanceService, GenericMongoServiceMixin):

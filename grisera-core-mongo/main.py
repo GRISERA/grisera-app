@@ -1,34 +1,29 @@
 from time import sleep
-from activity.activity_router import router as activity_router
-from activity_execution.activity_execution_router import (
-    router as activity_execution_router,
-)
-from arrangement.arrangement_router import router as arrangement_router
-from appearance.appearance_router import router as appearance_router
-from channel.channel_router import router as channel_router
-from experiment.experiment_router import router as experiment_router
+from grisera import activity_router
+from grisera import activity_execution_router
+from grisera import arrangement_router
+from grisera import appearance_router
+from grisera import channel_router
+from grisera import experiment_router
 from fastapi import FastAPI
-from hateoas import get_links
-from life_activity.life_activity_router import router as life_activity_router
-from measure.measure_router import router as measure_router
-from modality.modality_router import router as modality_router
-from observable_information.observable_information_router import (
-    router as observable_information_router,
-)
-from participant.participant_router import router as participant_router
-from participant_state.participant_state_router import (
-    router as participant_state_router,
-)
-from participation.participation_router import router as participation_router
-from personality.personality_router import router as personality_router
-from recording.recording_router import router as recording_router
-from registered_channel.registered_channel_router import (
-    router as registered_channel_router,
-)
-from time_series.time_series_router import router as time_series_router
-from registered_data.registered_data_router import router as registered_data_router
-from scenario.scenario_router import router as scenario_router
-from measure_name.measure_name_router import router as measure_name_router
+from grisera import get_links
+from grisera import life_activity_router
+from grisera import measure_router
+from grisera import modality_router
+from grisera import observable_information_router
+from grisera import participant_router
+from grisera import participant_state_router
+from grisera import participation_router
+from grisera import personality_router
+from grisera import recording_router
+from grisera import registered_channel_router
+from grisera import abstract_service as service
+from services.mongo_service import service as mongo_service
+from services.mongo_services import MongoServiceFactory
+from grisera import time_series_router
+from grisera import registered_data_router
+from grisera import scenario_router
+from grisera import measure_name_router
 from setup import SetupNodes
 import os
 
@@ -60,7 +55,7 @@ app.include_router(registered_data_router)
 app.include_router(scenario_router)
 app.include_router(time_series_router)
 
-
+app.dependency_overrides[service.get_service_factory] = mongo_service.get_service_factory
 @app.on_event("startup")
 async def startup_event():
     startup = SetupNodes()

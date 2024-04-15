@@ -1,25 +1,25 @@
 from typing import Union
 from bson import ObjectId
 from mongo_service.collection_mapping import Collections
-from observable_information.observable_information_model import (
+from grisera import (
     BasicObservableInformationOut,
     ObservableInformationOut,
 )
-from observable_information.observable_information_model import (
+from grisera import (
     ObservableInformationIn,
 )
 from mongo_service.service_mixins import (
     GenericMongoServiceMixin,
 )
-from recording.recording_service import RecordingService
-from recording.recording_model import (
+from grisera import RecordingService
+from grisera import (
     RecordingPropertyIn,
     RecordingIn,
     BasicRecordingOut,
     RecordingOut,
     RecordingsOut,
 )
-from models.not_found_model import NotFoundByIdModel
+from grisera import NotFoundByIdModel
 from mongo_service import MongoApiService
 
 
@@ -27,7 +27,7 @@ class RecordingServiceMongoDB(RecordingService, GenericMongoServiceMixin):
     """
     Object to handle logic of recording requests. There are also observable information methods,
     as observable information documents are embedded within recording documents.
-
+f
     Attributes:
     mongo_api_service (MongoApiService): Service used to communicate with Mongo API
     participation_service (ParticipationService): Service to send participation requests

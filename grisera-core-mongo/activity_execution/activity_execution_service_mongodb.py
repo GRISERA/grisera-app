@@ -2,8 +2,8 @@ from typing import Union
 
 from bson import ObjectId
 
-from activity.activity_service import ActivityService
-from activity_execution.activity_execution_model import (
+from grisera import ActivityService
+from grisera import (
     ActivityExecutionPropertyIn,
     ActivityExecutionRelationIn,
     ActivityExecutionIn,
@@ -11,13 +11,13 @@ from activity_execution.activity_execution_model import (
     ActivityExecutionsOut,
     BasicActivityExecutionOut,
 )
-from activity_execution.activity_execution_service import ActivityExecutionService
-from arrangement.arrangement_service import ArrangementService
-from models.not_found_model import NotFoundByIdModel
+from grisera import ActivityExecutionService
+from grisera import ArrangementService
+from grisera import NotFoundByIdModel
 from mongo_service.collection_mapping import Collections
 from mongo_service.service_mixins import GenericMongoServiceMixin
-from participation.participation_service import ParticipationService
-from scenario.scenario_service import ScenarioService
+from grisera import ParticipationService
+from grisera import ScenarioService
 
 
 class ActivityExecutionServiceMongoDB(

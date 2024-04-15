@@ -3,13 +3,10 @@ from typing import Union, Optional, List
 import bson
 
 from starlette.datastructures import QueryParams
-from time_series.transformation.multidimensional.TimeSeriesTransformationMultidimensional import (
-    TimeSeriesTransformationMultidimensional,
-)
-
+from grisera import TimeSeriesTransformationMultidimensional
 from mongo_service.collection_mapping import Collections
 from mongo_service.mongo_api_service import MongoApiService
-from time_series.time_series_model import (
+from grisera import (
     TimeSeriesPropertyIn,
     BasicTimeSeriesOut,
     TimeSeriesNodesOut,
@@ -20,9 +17,9 @@ from time_series.time_series_model import (
     SignalIn,
     SignalValueNodesIn,
 )
-from models.not_found_model import NotFoundByIdModel
-from time_series.time_series_service import TimeSeriesService
-from time_series.transformation.TimeSeriesTransformationFactory import (
+from grisera import NotFoundByIdModel
+from grisera import TimeSeriesService
+from grisera import (
     TimeSeriesTransformationFactory,
 )
 

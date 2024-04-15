@@ -1,15 +1,15 @@
 from typing import Union
 
-from life_activity.life_activity_model import (
+from grisera import (
     LifeActivityIn,
     LifeActivityOut,
     LifeActivitiesOut,
     BasicLifeActivityOut,
 )
-from life_activity.life_activity_service import LifeActivityService
+from grisera import LifeActivityService
 from mongo_service.collection_mapping import Collections
 from mongo_service.service_mixins import GenericMongoServiceMixin
-from observable_information.observable_information_service import (
+from grisera import (
     ObservableInformationService,
 )
 

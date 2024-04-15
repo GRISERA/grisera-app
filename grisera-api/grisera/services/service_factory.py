@@ -22,7 +22,7 @@ from grisera.scenario.scenario_service import ScenarioService
 from grisera.time_series.time_series_service import TimeSeriesService
 
 
-class ServiceFactory(ABC):
+class ServiceFactory():
 
     @abstractmethod
     def get_activity_service(self) -> ActivityService:

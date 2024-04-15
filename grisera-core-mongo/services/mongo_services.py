@@ -10,7 +10,7 @@ from observable_information.observable_information_service_mongodb import (
 )
 from personality.personality_service_mongodb import PersonalityServiceMongoDB
 from scenario.scenario_service_mongodb import ScenarioServiceMongoDB
-from services.service_factory import ServiceFactory
+from grisera import ServiceFactory
 from channel.channel_service_mongodb import ChannelServiceMongoDB
 from life_activity.life_activity_service_mongodb import LifeActivityServiceMongoDB
 from measure.measure_service_mongodb import MeasureServiceMongoDB
@@ -27,28 +27,28 @@ from registered_channel.registered_channel_service_mongodb import (
 )
 from registered_data.registered_data_service_mongodb import RegisteredDataServiceMongoDB
 from time_series.time_series_service_mongodb import TimeSeriesServiceMongoDB
-from activity.activity_service import ActivityService
-from activity_execution.activity_execution_service import ActivityExecutionService
-from appearance.appearance_service import AppearanceService
-from arrangement.arrangement_service import ArrangementService
-from channel.channel_service import ChannelService
-from experiment.experiment_service import ExperimentService
-from life_activity.life_activity_service import LifeActivityService
-from measure.measure_service import MeasureService
-from measure_name.measure_name_service import MeasureNameService
-from modality.modality_service import ModalityService
-from observable_information.observable_information_service import (
+from grisera import ActivityService
+from grisera import ActivityExecutionService
+from grisera import AppearanceService
+from grisera import ArrangementService
+from grisera import ChannelService
+from grisera import ExperimentService
+from grisera import LifeActivityService
+from grisera import MeasureService
+from grisera import MeasureNameService
+from grisera import ModalityService
+from grisera import (
     ObservableInformationService,
 )
-from participant.participant_service import ParticipantService
-from participant_state.participant_state_service import ParticipantStateService
-from participation.participation_service import ParticipationService
-from personality.personality_service import PersonalityService
-from recording.recording_service import RecordingService
-from registered_channel.registered_channel_service import RegisteredChannelService
-from registered_data.registered_data_service import RegisteredDataService
-from scenario.scenario_service import ScenarioService
-from time_series.time_series_service import TimeSeriesService
+from grisera import ParticipantService
+from grisera import ParticipantStateService
+from grisera import ParticipationService
+from grisera import PersonalityService
+from grisera import RecordingService
+from grisera import RegisteredChannelService
+from grisera import RegisteredDataService
+from grisera import ScenarioService
+from grisera import TimeSeriesService
 
 
 class MongoServiceFactory(ServiceFactory):

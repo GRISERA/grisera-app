@@ -2,14 +2,14 @@ from typing import Union
 
 from mongo_service.service_mixins import GenericMongoServiceMixin
 from mongo_service.collection_mapping import Collections
-from modality.modality_model import (
+from grisera import (
     ModalityIn,
     ModalityOut,
     ModalitiesOut,
     BasicModalityOut,
 )
-from modality.modality_service import ModalityService
-from observable_information.observable_information_service import (
+from grisera import ModalityService
+from grisera import (
     ObservableInformationService,
 )
 

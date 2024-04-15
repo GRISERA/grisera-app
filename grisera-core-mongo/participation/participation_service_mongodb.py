@@ -1,19 +1,19 @@
 from typing import Union
 
-from activity_execution.activity_execution_service import ActivityExecutionService
+from grisera import ActivityExecutionService
 from mongo_service.collection_mapping import Collections
 from mongo_service import MongoApiService
 from mongo_service.service_mixins import GenericMongoServiceMixin
-from participant_state.participant_state_service import ParticipantStateService
-from participation.participation_model import (
+from grisera import ParticipantStateService
+from grisera import (
     ParticipationIn,
     ParticipationOut,
     ParticipationsOut,
     BasicParticipationOut,
 )
-from models.not_found_model import NotFoundByIdModel
-from participation.participation_service import ParticipationService
-from recording.recording_service import RecordingService
+from grisera import NotFoundByIdModel
+from grisera import ParticipationService
+from grisera import RecordingService
 
 
 class ParticipationServiceMongoDB(ParticipationService, GenericMongoServiceMixin):

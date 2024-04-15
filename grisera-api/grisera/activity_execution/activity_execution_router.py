@@ -1,6 +1,6 @@
 from typing import Union
 
-from fastapi import Response
+from fastapi import Response, Depends
 from fastapi_utils.cbv import cbv
 from fastapi_utils.inferring_router import InferringRouter
 from grisera.helpers.hateoas import get_links
@@ -12,6 +12,7 @@ from grisera.activity_execution.activity_execution_model import (
     ActivityExecutionPropertyIn,
     ActivityExecutionRelationIn,
 )
+from grisera.services.service import service
 from grisera.services.service_factory import ServiceFactory
 
 router = InferringRouter()
@@ -26,7 +27,7 @@ class ActivityExecutionRouter:
         activity_execution_service (ActivityExecutionService): Service instance for activity execution
     """
 
-    def __init__(self, service_factory: ServiceFactory):
+    def __init__(self, service_factory: ServiceFactory = Depends(service.get_service_factory)):
         self.activity_execution_service = service_factory.get_activity_execution_service()
 
     @router.post(

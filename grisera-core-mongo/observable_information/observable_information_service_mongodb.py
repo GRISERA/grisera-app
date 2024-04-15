@@ -2,16 +2,16 @@ from typing import Union
 from bson import ObjectId
 from mongo_service.collection_mapping import Collections
 from mongo_service.service_mixins import GenericMongoServiceMixin
-from observable_information.observable_information_model import (
+from grisera import (
     ObservableInformationIn,
     ObservableInformationOut,
     BasicObservableInformationOut,
     ObservableInformationsOut,
 )
-from observable_information.observable_information_service import (
+from grisera import (
     ObservableInformationService,
 )
-from models.not_found_model import NotFoundByIdModel
+from grisera import NotFoundByIdModel
 
 
 class ObservableInformationServiceMongoDB(

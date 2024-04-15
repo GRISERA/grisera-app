@@ -2,12 +2,12 @@ from typing import List, Union
 
 from bson import ObjectId
 
-from appearance.appearance_service import AppearanceService
+from grisera import AppearanceService
 from mongo_service.collection_mapping import Collections
 from mongo_service.service_mixins import GenericMongoServiceMixin
-from participant.participant_service import ParticipantService
-from participant_state.participant_state_service import ParticipantStateService
-from participant_state.participant_state_model import (
+from grisera import ParticipantService
+from grisera import ParticipantStateService
+from grisera import (
     ParticipantStatePropertyIn,
     BasicParticipantStateOut,
     ParticipantStatesOut,
@@ -15,9 +15,9 @@ from participant_state.participant_state_model import (
     ParticipantStateIn,
     ParticipantStateRelationIn,
 )
-from models.not_found_model import NotFoundByIdModel
-from participation.participation_service import ParticipationService
-from personality.personality_service import PersonalityService
+from grisera import NotFoundByIdModel
+from grisera import ParticipationService
+from grisera import PersonalityService
 
 
 class ParticipantStateServiceMongoDB(ParticipantStateService, GenericMongoServiceMixin):

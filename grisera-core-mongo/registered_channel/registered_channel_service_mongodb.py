@@ -5,14 +5,14 @@ from mongo_service.service_mixins import (
     GenericMongoServiceMixin,
 )
 from mongo_service import MongoApiService
-from registered_channel.registered_channel_service import RegisteredChannelService
-from registered_channel.registered_channel_model import (
+from grisera import RegisteredChannelService
+from grisera import (
     RegisteredChannelOut,
     RegisteredChannelIn,
     BasicRegisteredChannelOut,
     RegisteredChannelsOut,
 )
-from models.not_found_model import NotFoundByIdModel
+from grisera import NotFoundByIdModel
 
 
 class RegisteredChannelServiceMongoDB(

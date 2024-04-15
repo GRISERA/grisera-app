@@ -1,6 +1,6 @@
 from typing import Union
 
-from fastapi import Response
+from fastapi import Response, Depends
 from fastapi_utils.cbv import cbv
 from fastapi_utils.inferring_router import InferringRouter
 from grisera.helpers.hateoas import get_links
@@ -10,6 +10,7 @@ from grisera.participation.participation_model import (
     ParticipationOut,
     ParticipationsOut,
 )
+from grisera.services.service import service
 from grisera.services.service_factory import ServiceFactory
 
 router = InferringRouter()
@@ -24,7 +25,7 @@ class ParticipationRouter:
         participation_service (ParticipationService): Service instance for participation
     """
 
-    def __init__(self, service_factory: ServiceFactory):
+    def __init__(self, service_factory: ServiceFactory = Depends(service.get_service_factory)):
         self.participation_service = service_factory.get_participation_service()
 
     @router.post(

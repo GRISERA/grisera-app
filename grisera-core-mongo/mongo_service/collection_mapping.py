@@ -1,45 +1,45 @@
-from activity.activity_model import ActivityIn
-from activity_execution.activity_execution_model import (
+from grisera import ActivityIn
+from grisera import (
     ActivityExecutionPropertyIn,
     ActivityExecutionRelationIn,
 )
-from appearance.appearance_model import (
+from grisera import (
     AppearanceOcclusionOut,
     AppearanceSomatotypeOut,
     AppearanceOcclusionIn,
     AppearanceSomatotypeIn,
 )
-from arrangement.arrangement_model import ArrangementIn
-from channel.channel_model import ChannelIn
-from experiment.experiment_model import ExperimentIn
-from life_activity.life_activity_model import LifeActivityIn
-from measure.measure_model import MeasurePropertyIn, MeasureRelationIn
-from measure_name.measure_name_model import MeasureNameIn
-from modality.modality_model import ModalityIn
-from observable_information.observable_information_model import (
+from grisera import ArrangementIn
+from grisera import ChannelIn
+from grisera import ExperimentIn
+from grisera import LifeActivityIn
+from grisera import MeasurePropertyIn, MeasureRelationIn
+from grisera import MeasureNameIn
+from grisera import ModalityIn
+from grisera import (
     ObservableInformationIn,
 )
-from participant.participant_model import ParticipantIn
-from participant_state.participant_state_model import (
+from grisera import ParticipantIn
+from grisera import (
     ParticipantStatePropertyIn,
     ParticipantStateRelationIn,
 )
-from participation.participation_model import ParticipationIn, BasicParticipationOut
-from personality.personality_model import (
+from grisera import ParticipationIn, BasicParticipationOut
+from grisera import (
     PersonalityBigFiveIn,
     PersonalityPanasIn,
 )
-from recording.recording_model import (
+from grisera import (
     RecordingPropertyIn,
     RecordingRelationIn,
 )
-from registered_channel.registered_channel_model import (
+from grisera import (
     RegisteredChannelIn,
     BasicRegisteredChannelOut,
 )
-from registered_data.registered_data_model import RegisteredDataIn
-from scenario.scenario_model import ScenarioIn
-from time_series.time_series_model import (
+from grisera import RegisteredDataIn
+from grisera import ScenarioIn
+from grisera import (
     TimeSeriesPropertyIn,
     TimeSeriesRelationIn,
 )

@@ -1,10 +1,10 @@
 from typing import Union
 
-from models.not_found_model import NotFoundByIdModel
+from grisera import NotFoundByIdModel
 from mongo_service.collection_mapping import Collections
 from mongo_service.mongo_api_service import MongoApiService
-from participant_state.participant_state_service import ParticipantStateService
-from personality.personality_model import (
+from grisera import ParticipantStateService
+from grisera import (
     PersonalityBigFiveIn,
     PersonalityBigFiveOut,
     PersonalityPanasIn,
@@ -13,7 +13,7 @@ from personality.personality_model import (
     BasicPersonalityPanasOut,
     PersonalitiesOut,
 )
-from personality.personality_service import PersonalityService
+from grisera import PersonalityService
 
 
 class PersonalityServiceMongoDB(PersonalityService):

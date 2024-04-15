@@ -4,12 +4,12 @@ import pymongo
 from bson import ObjectId
 from datetime import datetime, timezone
 
-from time_series.time_series_model import (
+from grisera import (
     SignalIn,
     SignalValueNodesIn,
     TimeSeriesIn,
 )
-from models.not_found_model import NotFoundByIdModel
+from grisera import NotFoundByIdModel
 from mongo_service.collection_mapping import get_collection_name, Collections
 from mongo_service.mongodb_api_config import mongo_api_address, mongo_database_name
 

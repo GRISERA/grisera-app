@@ -1,5 +1,5 @@
 from typing import Union
-from fastapi import Response
+from fastapi import Response, Depends
 from fastapi_utils.cbv import cbv
 from fastapi_utils.inferring_router import InferringRouter
 from grisera.helpers.hateoas import get_links
@@ -14,6 +14,7 @@ from grisera.activity_execution.activity_execution_model import (
     ActivityExecutionOut,
     ActivityExecutionIn,
 )
+from grisera.services.service import service
 from grisera.services.service_factory import ServiceFactory
 
 router = InferringRouter()
@@ -28,7 +29,7 @@ class ScenarioRouter:
         scenario_service (ScenarioService): Service instance for scenarios
     """
 
-    def __init__(self, service_factory: ServiceFactory):
+    def __init__(self, service_factory: ServiceFactory = Depends(service.get_service_factory)):
         self.scenario_service = service_factory.get_scenario_service()
 
     @router.post("/scenarios", tags=["scenarios"], response_model=ScenarioOut)

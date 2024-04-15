@@ -1,4 +1,4 @@
-from fastapi import Response
+from fastapi import Response, Depends
 from fastapi_utils.cbv import cbv
 from fastapi_utils.inferring_router import InferringRouter
 from grisera.helpers.hateoas import get_links
@@ -11,6 +11,7 @@ from grisera.participant_state.participant_state_model import (
 )
 from typing import Union
 from grisera.models.not_found_model import NotFoundByIdModel
+from grisera.services.service import service
 from grisera.services.service_factory import ServiceFactory
 
 router = InferringRouter()
@@ -25,7 +26,7 @@ class ParticipantStateRouter:
         participant_state_service (ParticipantStateService): Service instance for participants' states
     """
 
-    def __init__(self, service_factory: ServiceFactory):
+    def __init__(self, service_factory: ServiceFactory = Depends(service.get_service_factory)):
         self.participant_state_service = service_factory.get_participant_state_service()
 
     @router.post(

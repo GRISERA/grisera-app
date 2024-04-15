@@ -1,17 +1,17 @@
 from typing import Union
 
-from experiment.experiment_model import (
+from grisera import (
     ExperimentIn,
     ExperimentsOut,
     BasicExperimentOut,
     ExperimentOut,
 )
-from experiment.experiment_service import ExperimentService
-from models.not_found_model import NotFoundByIdModel
+from grisera import ExperimentService
+from grisera import NotFoundByIdModel
 from mongo_service.collection_mapping import Collections
 from mongo_service.mongo_api_service import MongoApiService
 from mongo_service.service_mixins import GenericMongoServiceMixin
-from scenario.scenario_service import ScenarioService
+from grisera import ScenarioService
 
 
 class ExperimentServiceMongoDB(ExperimentService, GenericMongoServiceMixin):

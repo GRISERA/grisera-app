@@ -1,6 +1,6 @@
 from typing import Union
 
-from fastapi import Response
+from fastapi import Response, Depends
 from fastapi_utils.cbv import cbv
 from fastapi_utils.inferring_router import InferringRouter
 from grisera.helpers.hateoas import get_links
@@ -9,6 +9,7 @@ from grisera.arrangement.arrangement_model import (
     ArrangementsOut,
 )
 from grisera.models.not_found_model import NotFoundByIdModel
+from grisera.services.service import service
 from grisera.services.service_factory import ServiceFactory
 
 router = InferringRouter()
@@ -23,7 +24,7 @@ class ArrangementRouter:
         arrangement_service (ArrangementService): Service instance for arrangement
     """
 
-    def __init__(self, service_factory: ServiceFactory):
+    def __init__(self, service_factory: ServiceFactory = Depends(service.get_service_factory)):
         self.arrangement_service = service_factory.get_arrangement_service()
 
     @router.get(
